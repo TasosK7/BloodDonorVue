@@ -15,6 +15,6 @@ onBeforeMount(() => {
 
 <template>
   <AppHeader />
-  <RouterView />
   <AppFooter />
+  <RouterView />
 </template>

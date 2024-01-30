@@ -40,3 +40,34 @@ export const useApplicationStore = defineStore('application', () => {
 
     return { userData, setUserData, persistUserData, loadUserData, clearUserData, isAuthenticated };
 });
+
+
+
+
+export const useCitizenStore = defineStore('citizen', () => {
+    const citizenData = ref(null);
+
+    const setCitizenData = (tempCitizenData) => {
+        citizenData.value = tempCitizenData;
+    };
+    const persistCitizenData = () => {
+        localStorage.setItem('citizenData', JSON.stringify(citizenData.value));
+    };
+    const loadCitizenData = () => {
+        let tempCitizenData = localStorage.getItem('citizenData');
+        tempCitizenData = JSON.parse(tempCitizenData);
+        if (tempCitizenData === null || tempCitizenData === undefined) {
+            return;
+        }
+        citizenData.value = tempCitizenData;
+    };
+    const clearCitizenData = () => {
+        localStorage.setItem('citizenData', JSON.stringify(null));
+        citizenData.value = null;
+    };
+    const isAuthenticated = computed(() => {
+        return checkJWT(citizenData.value?.accessToken);
+    });
+
+    return { citizenData, setCitizenData, persistCitizenData, loadCitizenData, clearCitizenData, isAuthenticated };
+});

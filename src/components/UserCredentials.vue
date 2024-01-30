@@ -1,39 +1,33 @@
 <script setup>
-import { useApplicationStore } from '@/stores/application.js';
-const { userData } = useApplicationStore();
+
+import { useCitizenStore } from '@/stores/application.js';
+const { citizenData } = useCitizenStore();
 import { onMounted, ref } from 'vue';
 import { useRemoteData } from '@/composables/useRemoteData.js';
-const urlRef = ref('http://localhost:7070/citizen/'+userData.id+'/profile');
-console.log(userData.id);
-const authRef = ref(true);
-const { data, loading, performRequest } = useRemoteData(urlRef, authRef);
 
-onMounted(() => {
-  performRequest();
-});
 </script>
 <template>
   <div>
     <div>
-      <strong>First Name:</strong> {{ userData.fname }}
+      <strong>First Name:</strong> {{ citizenData.fname }}
     </div>
     <div>
-      <strong>Last Name:</strong> {{ userData.lname }}
+      <strong>Last Name:</strong> {{ citizenData.lname }}
     </div>
     <div>
-      <strong>Email:</strong> {{ userData.email }}
+      <strong>Email:</strong> {{ citizenData.email }}
     </div>
     <div>
-      <strong>Phone number:</strong> {{ userData.phone_number }}
+      <strong>Phone number:</strong> {{ citizenData.phone_number }}
     </div>
     <div>
-      <strong>Address:</strong> {{ userData.address }}
+      <strong>Address:</strong> {{ citizenData.address }}
     </div>
     <div>
-      <strong>Address:</strong> {{ userData.address }}
+      <strong>Address:</strong> {{ citizenData.address }}
     </div>
     <div>
-      <strong>Blood Type:</strong> {{ userData.blood_type }}
+      <strong>Blood Type:</strong> {{ citizenData.blood_type }}
     </div>
   </div>
 </template>
