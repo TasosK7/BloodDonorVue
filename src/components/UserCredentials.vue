@@ -1,6 +1,16 @@
 <script setup>
 import { useApplicationStore } from '@/stores/application.js';
 const { userData } = useApplicationStore();
+import { onMounted, ref } from 'vue';
+import { useRemoteData } from '@/composables/useRemoteData.js';
+const urlRef = ref('http://localhost:7070/citizen/'+userData.id+'/profile');
+console.log(userData.id);
+const authRef = ref(true);
+const { data, loading, performRequest } = useRemoteData(urlRef, authRef);
+
+onMounted(() => {
+  performRequest();
+});
 </script>
 <template>
   <div>

@@ -1,6 +1,7 @@
 <!-- ProfileView.vue -->
 <script setup>
 import UserCredentials from '@/components/UserCredentials.vue';
+
 </script>
 
 <template>

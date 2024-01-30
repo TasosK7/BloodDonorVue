@@ -1,7 +1,7 @@
 <script setup>
 import { RouterLink } from 'vue-router';
 import { useApplicationStore } from '@/stores/application.js';
-//const applicationStore = useApplicationStore();
+const applicationStore = useApplicationStore();
 </script>
 
 <!-- TestHeader.vue -->
@@ -12,13 +12,13 @@ import { useApplicationStore } from '@/stores/application.js';
         <div class="d-flex flex-wrap justify-content-center py-2 px-3">
 
         <ul class="nav">
-          <li class="nav-item">
+          <li class="nav-item"  v-if="applicationStore.isAuthenticated === true">
             <router-link :to="{ name: 'home' }" class="nav-link">Home</router-link>
           </li>
-          <li class="nav-item">
+          <li class="nav-item"  v-if="applicationStore.isAuthenticated === true">
             <router-link :to="{ name: 'applications' }" class="nav-link">My Applications</router-link>
           </li>
-          <li class="nav-item">
+          <li class="nav-item"  v-if="applicationStore.isAuthenticated === true">
             <router-link :to="{ name: 'profile' }" class="nav-link">My Profile</router-link>
           </li>
            <li class="nav-item" >

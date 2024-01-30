@@ -8,15 +8,15 @@ const { setUserData, persistUserData, isAuthenticated } = useApplicationStore();
 
 const loading = ref(false);
 const registrationData = ref({
-    username:'',
-    email:'',
-    password: '',
-    fname: '',
-    lname: '',
-    phone_number: '',
-    date_of_birth:'',
-    address: '',
-    blood_type: ''
+    "username":'',
+    "email":'',
+    "password": '',
+    "fname": '',
+    "lname": '',
+    "phone_number": '',
+    "date_of_birth":'',
+    "address": '',
+    "blood_type": ''
 
 });
 const registrationFailed = ref(false);
