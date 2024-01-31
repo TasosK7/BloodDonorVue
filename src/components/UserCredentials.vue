@@ -21,7 +21,7 @@ import { useRemoteData } from '@/composables/useRemoteData.js';
       <strong>Phone number:</strong> {{ citizenData.phone_number }}
     </div>
     <div>
-      <strong>Address:</strong> {{ citizenData.address }}
+      <strong>Date of Birth:</strong> {{ citizenData.date_of_birth }}
     </div>
     <div>
       <strong>Address:</strong> {{ citizenData.address }}
