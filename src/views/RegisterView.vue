@@ -22,7 +22,7 @@ const registrationData = ref({
 const registrationFailed = ref(false);
 
 const onFormSubmit = () => {
-    console.log(registrationData);
+    console.log(JSON.stringify(registrationData.value));
     loading.value = true;
     registrationFailed.value = false;
 
@@ -30,16 +30,17 @@ const onFormSubmit = () => {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'
+
+
         },
         body: JSON.stringify(registrationData.value)
     })
         .then((response) => {
             if (response.ok) {
-                response.json().then((data) => {
-                    setUserData(data);
-                    persistUserData();
-                    router.push({ name: 'home' });
-                });
+
+
+                    router.push({ name: 'login' });
+
             } else {
                 registrationFailed.value = true;
             }
@@ -76,6 +77,10 @@ onBeforeMount(() => {
                         <div class="mb-2" v-if="registrationFailed">
                             <div class="alert alert-danger" role="alert">
                                 Registration failed!
+                                -Every field must not be blank
+                                -Username must be 3-20 characters long
+                                -Email must be of correct format
+                                -Password must be 6-40 characters long
                             </div>
                         </div>
 

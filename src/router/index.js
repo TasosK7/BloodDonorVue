@@ -27,13 +27,27 @@ const router = createRouter({
         {
             path: '/profile',
             name: 'profile',
-            component: () => import('../views/ProfileView.vue')
+            component: () => import('../views/ProfileView.vue'),
+          children: [
+            {
+              path: '',
+              name: 'editetails',
+              component: () => import('../views/EditDetailsView.vue'),
+              meta: { requiresAuth: true }
+            }
+            ]
         },
         {
             path: '/register',
             name: 'register',
             component: () => import('../views/RegisterView.vue')
         },
+    {
+      path: '/logout',
+      name: 'logout',
+      component: () => import('../views/LogoutView.vue')
+    },
+
 
   ]
 })
