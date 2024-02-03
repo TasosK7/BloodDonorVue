@@ -17,6 +17,9 @@ const applicationStore = useApplicationStore();
             <router-link :to="{ name: 'applications' }" class="nav-link">My Applications</router-link>
           </li>
           <li class="nav-item" v-if="applicationStore.isAuthenticated === true">
+            <router-link :to="{ name: 'createNewApplication' }" class="nav-link">Apply For Donation</router-link>
+          </li>
+          <li class="nav-item" v-if="applicationStore.isAuthenticated === true">
             <router-link :to="{ name: 'profile' }" class="nav-link">My Profile</router-link>
           </li>
           <li class="nav-item" v-if="applicationStore.isAuthenticated === false">
@@ -58,6 +61,8 @@ const applicationStore = useApplicationStore();
   display: inline-block;
   margin-right: 25px;
   margin-left: 25px;
+  font-style: italic;
+  font-size: 36px;
 }
 
 .app-title {
@@ -69,7 +74,7 @@ const applicationStore = useApplicationStore();
 }
 
 .custom-header {
-  min-width: 500px; /* Adjust the width as needed */
+  min-width: 700px; /* Adjust the width as needed */
   margin: 0 auto; /* Center the header horizontally */
 }
 </style>

@@ -24,9 +24,8 @@ onMounted(async () => {
       },
     });
           const data = await response.json();
-          console.log('Data:', data);
     setCitizenData(data);
-    persistCitizenData();
+    persistCitizenData(); 
 
 
 
@@ -78,17 +77,18 @@ onMounted(async () => {
       <div class="row py-4 px-3">
         <div class="col-12">
           <div class="mb-4">
-            <h1 class="fs-3">Home</h1>
+            <h1>Home</h1>
           </div>
           <div>
             <p>
               Logged in as: <strong>{{ userData.username }}</strong>
               Role :<strong>{{ userData.roles }}</strong>
             </p>
-
           </div>
         </div>
       </div>
     </div>
   </div>
 </template>
+
+

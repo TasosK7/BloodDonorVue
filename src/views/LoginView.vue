@@ -59,7 +59,7 @@ onBeforeMount(() => {
             <div class="row py-4 px-3">
                 <div class="col-4">
                     <div class="mb-4">
-                        <h1 class="fs-3">Login</h1>
+                        <h1>Login</h1>
                     </div>
                     <div class="spinner-border" role="status" v-if="loading">
                         <span class="visually-hidden">Loading...</span>
@@ -82,7 +82,7 @@ onBeforeMount(() => {
                             <input
                                 v-model="credentials.username"
                                 type="text"
-                                class="form-control"
+                                class="form-control-lg"
                                 id="usernameFormControl"
                             />
                         </div>
@@ -93,11 +93,11 @@ onBeforeMount(() => {
                             <input
                                 v-model="credentials.password"
                                 type="password"
-                                class="form-control"
+                                class="form-control-lg"
                                 id="passwordFormControl"
                             />
                         </div>
-                        <button @click="onFormSubmit" type="submit" class="btn btn-primary">
+                        <button @click="onFormSubmit" type="submit" class="btn btn-primary btn-lg">
                             Login
                             <span class="fst-italic" v-if="credentials.username"
                                 >as {{ credentials.username }}</span

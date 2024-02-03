@@ -20,6 +20,11 @@ const router = createRouter({
       component: () => import('../views/ApplicationsView.vue'),
     },
     {
+      path: '/createNewApplication',
+      name: 'createNewApplication',
+      component: () => import('../views/CreateApplicationView.vue')
+    },
+    {
             path: '/login',
             name: 'login',
             component: () => import('../views/LoginView.vue')
@@ -47,6 +52,12 @@ const router = createRouter({
       name: 'logout',
       component: () => import('../views/LogoutView.vue')
     },
+    {
+    path: '/thankyou',
+    name: 'thankyou',
+    component: () => import('../views/ThankYouView.vue')
+     },
+
 
 
   ]

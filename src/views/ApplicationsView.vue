@@ -2,21 +2,20 @@
 import { onMounted, ref  , computed} from 'vue';
 import { useRoute } from 'vue-router';
 import { useRemoteData } from '@/composables/useRemoteData.js';
-
+import { useCitizenStore } from '@/stores/application.js'
+const { citizenData , loadCitizenData } = useCitizenStore();
+loadCitizenData();
 const route = useRoute();
 
 const citizenIdRef = ref(null);
 const urlRef = computed(() => {
-  return 'http://localhost:7070/citizen/' + citizenIdRef.value;
+  return 'http://localhost:7070/citizen/' + citizenData.id;
 });
 
 const authRef = ref(true);
 const { data, performRequest } = useRemoteData(urlRef, authRef);
 
-onMounted(() => {
-citizenIdRef.value = route.params.id;
-  performRequest();
-});
+console.log(data.value);
 </script>
 
 <template>
@@ -25,7 +24,7 @@ citizenIdRef.value = route.params.id;
             <div class="row py-4 px-3">
                 <div class="col-12">
                     <div class="mb-4">
-                        <h1 class="fs-3">Applications</h1>
+                        <h1>Applications</h1>
                     </div>
                     <div>
                       <table class="table">

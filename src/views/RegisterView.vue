@@ -68,7 +68,7 @@ onBeforeMount(() => {
             <div class="row py-4 px-3">
                 <div class="col-4">
                     <div class="mb-4">
-                        <h1 class="fs-3">Register</h1>
+                        <h1>Register</h1>
                     </div>
                     <div class="spinner-border" role="status" v-if="loading">
                         <span class="visually-hidden">Loading...</span>
@@ -91,8 +91,8 @@ onBeforeMount(() => {
                             >
                             <input
                                 v-model="registrationData.username"
-                                type="username"
-                                class="form-control"
+                                type="text"
+                                class="form-control-lg"
                                 id="usernameFormControl"
                             />
                         </div>
@@ -104,7 +104,7 @@ onBeforeMount(() => {
                             <input
                                 v-model="registrationData.email"
                                 type="email"
-                                class="form-control"
+                                class="form-control-lg"
                                 id="emailFormControl"
                             />
                         </div>
@@ -116,7 +116,7 @@ onBeforeMount(() => {
                             <input
                                 v-model="registrationData.password"
                                 type="password"
-                                class="form-control"
+                                class="form-control-lg"
                                 id="passwordFormControl"
                             />
                         </div>
@@ -129,7 +129,7 @@ onBeforeMount(() => {
                             <input
                                 v-model="registrationData.fname"
                                 type="text"
-                                class="form-control"
+                                class="form-control-lg"
                                 id="firstNameFormControl"
                             />
                         </div>
@@ -142,7 +142,7 @@ onBeforeMount(() => {
                             <input
                                 v-model="registrationData.lname"
                                 type="text"
-                                class="form-control"
+                                class="form-control-lg"
                                 id="lastNameFormControl"
                             />
                         </div>
@@ -156,8 +156,8 @@ onBeforeMount(() => {
                             >
                             <input
                                 v-model="registrationData.phone_number"
-                                type="tel"
-                                class="form-control"
+                                type="text"
+                                class="form-control-lg"
                                 id="phoneNumberFormControl"
                             />
                         </div>
@@ -169,7 +169,7 @@ onBeforeMount(() => {
                             <input
                                 v-model="registrationData.date_of_birth"
                                 type="text"
-                                class="form-control"
+                                class="form-control-lg"
                                 id="dateOfBirthFormControl"
                             />
                         </div>
@@ -182,7 +182,7 @@ onBeforeMount(() => {
                             <input
                                 v-model="registrationData.address"
                                 type="text"
-                                class="form-control"
+                                class="form-control-lg"
                                 id="addressFormControl"
                             />
                         </div>
@@ -194,7 +194,7 @@ onBeforeMount(() => {
                             <input
                                 v-model="registrationData.blood_type"
                                 type="text"
-                                class="form-control"
+                                class="form-control-lg"
                                 id="bloodTypeFormControl"
                             />
                         </div>
@@ -202,7 +202,7 @@ onBeforeMount(() => {
                        
 
         
-                        <button @click="onFormSubmit" type="submit" class="btn btn-primary">
+                        <button @click="onFormSubmit" type="submit" class="btn btn-primary btn-lg">
                             Register
                         </button>
                     </form>

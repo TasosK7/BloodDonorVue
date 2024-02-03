@@ -4,7 +4,6 @@ import { useCitizenStore } from '@/stores/application.js';
 const { citizenData } = useCitizenStore();
 import { onMounted, ref } from 'vue';
 import { useRemoteData } from '@/composables/useRemoteData.js';
-
 </script>
 <template>
   <div>

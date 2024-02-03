@@ -31,13 +31,13 @@ const onFormSubmit = () => {
       <div class="row py-4 px-3">
         <div class="col-4">
           <div class="mb-4">
-            <h1 class="fs-3">Logout</h1>
+            <h1>Logout</h1>
           </div>
           <div class="spinner-border" role="status" v-if="loading">
             <span class="visually-hidden">Loading...</span>
           </div>
           <form v-else>
-            <button @click="onFormSubmit" type="submit" class="btn btn-primary">
+            <button @click="onFormSubmit" type="submit" class="btn btn-primary btn-lg">
               Logout
             </button>
           </form>

@@ -4,7 +4,7 @@
       <div class="row py-4 px-3">
         <div class="col-12">
           <div class="mb-4">
-            <h1 class="fs-3">WELCOME TO BLOOD DONOR APP</h1>
+            <h1>WELCOME TO BLOOD DONOR APP</h1>
           </div>
           <div>
             <p>
