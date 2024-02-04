@@ -2,8 +2,7 @@
 import { onBeforeMount, onMounted, ref } from 'vue'
 import { useRouter } from 'vue-router';
 import { useCitizenStore } from '@/stores/application.js';
-const { citizenData , loadCitizenData } = useCitizenStore();
-loadCitizenData();
+const { citizenData  } = useCitizenStore();
 const router = useRouter();
 console.log('Citizen ID:', citizenData.id);
 

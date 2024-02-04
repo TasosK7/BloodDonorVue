@@ -1,9 +1,10 @@
 <script setup>
 
 import { useCitizenStore } from '@/stores/application.js';
-const { citizenData } = useCitizenStore();
+const { citizenData , loadCitizenData ,persistCitizenData} = useCitizenStore();
 import { onMounted, ref } from 'vue';
 import { useRemoteData } from '@/composables/useRemoteData.js';
+// Load citizen data when the component is mounted
 </script>
 <template>
   <div>
