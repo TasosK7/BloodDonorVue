@@ -1,21 +1,32 @@
 <script setup>
-import { onMounted, ref  , computed} from 'vue';
-import { useRoute } from 'vue-router';
-import { useRemoteData } from '@/composables/useRemoteData.js';
-import { useCitizenStore } from '@/stores/application.js'
-const { citizenData , loadCitizenData } = useCitizenStore();
-loadCitizenData();
-const route = useRoute();
+import { onMounted, ref } from 'vue';
+import { useApplicationStore, useCitizenStore } from '@/stores/application.js'
+const { userData } = useApplicationStore();
+const { citizenData } = useCitizenStore();
+const values = ref([]);
+const loading = ref(true);
 
-const citizenIdRef = ref(null);
-const urlRef = computed(() => {
-  return 'http://localhost:7070/citizen/' + citizenData.id;
+
+onMounted(async () => {
+  try {
+    console.log(citizenData.id);
+    const response = await fetch('http://localhost:7070/citizen/' + citizenData.id, {
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': `Bearer ${userData.accessToken}`,
+      },
+    });
+    const data = await response.json();
+    values.value = data;
+    loading.value = false;
+    console.log(data);
+  } catch (error) {
+    console.error('Error fetching data:', error);
+    loading.value = false;
+  }
+
 });
-
-const authRef = ref(true);
-const { data, performRequest } = useRemoteData(urlRef, authRef);
-
-console.log(data.value);
 </script>
 
 <template>
@@ -35,8 +46,8 @@ console.log(data.value);
                           <th>Approval Status</th>
                         </tr>
                         </thead>
-                        <tbody v-if="data">
-                        <tr v-for="application in data._embedded.applications" :key="application.id">
+                        <tbody v-if="values">
+                        <tr v-for="application in values" :key="application.id">
                           <td>{{ application.date_created }}</td>
                           <td>{{ application.recent_blood_tests }}</td>
                           <td>{{ application.approval_status }}</td>
