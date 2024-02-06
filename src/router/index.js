@@ -60,6 +60,11 @@ const router = createRouter({
       name: 'changedDetails',
       component: () => import('../views/ChangedDetailsView.vue')
     },
+    {
+      path: '/approveApplications',
+      name: 'approveApplications',
+      component: () => import('../views/ApproveApplicationsView.vue')
+    },
 
 
 

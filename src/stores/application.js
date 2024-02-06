@@ -5,12 +5,24 @@ function checkJWT(token) {
     if (token === null || token === undefined) {
         return false;
     }
+
+
+    
+    
     const base64Url = token.split('.')[1];
     if (!base64Url) return false;
     const base64 = base64Url.replace(/-/g, '+').replace(/_/g, '/'); // Convert base64url to base64
     const payload = JSON.parse(atob(base64)); // Decode base64 and parse JSON
     const currentTime = Math.floor(Date.now() / 1000); // Get current time in Unix timestamp (seconds)
     return currentTime < payload.exp; // Check if token is expired
+}
+
+function userRole(roles) {
+    return !!roles.includes("ROLE_USER");
+}
+
+function secRole(roles) {
+    return !!roles.includes("ROLE_SECRETARY");
 }
 
 export const useApplicationStore = defineStore('application', () => {
@@ -38,7 +50,17 @@ export const useApplicationStore = defineStore('application', () => {
         return checkJWT(userData.value?.accessToken);
     });
 
-    return { userData, setUserData, persistUserData, loadUserData, clearUserData, isAuthenticated };
+    // Inside useApplicationStore definition
+    const isUser = computed(() => {
+        return userRole(userData.value?.roles);
+    });
+
+    // Inside useApplicationStore definition
+    const isSecretary = computed(() => {
+        return secRole(userData.value?.roles);
+    });
+
+    return { userData, setUserData, persistUserData, loadUserData, clearUserData, isAuthenticated, isUser , isSecretary };
 });
 
 

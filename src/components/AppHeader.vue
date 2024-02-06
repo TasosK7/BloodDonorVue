@@ -1,7 +1,10 @@
 <script setup>
 import { RouterLink } from 'vue-router';
+import {computed, ref , watchEffect} from 'vue';
 import { useApplicationStore } from '@/stores/application.js';
 const applicationStore = useApplicationStore();
+const {userData} = useApplicationStore();
+
 </script>
 
 <template>
@@ -13,15 +16,22 @@ const applicationStore = useApplicationStore();
           <li class="nav-item" v-if="applicationStore.isAuthenticated === true">
             <router-link :to="{ name: 'home' }" class="nav-link">Home</router-link>
           </li>
-          <li class="nav-item" v-if="applicationStore.isAuthenticated === true">
+
+          <li class="nav-item" v-if="applicationStore.isAuthenticated === true && applicationStore.isUser">
             <router-link :to="{ name: 'applications' }" class="nav-link">My Applications</router-link>
           </li>
-          <li class="nav-item" v-if="applicationStore.isAuthenticated === true">
+          <li class="nav-item" v-if="applicationStore.isAuthenticated === true && applicationStore.isUser">
             <router-link :to="{ name: 'createNewApplication' }" class="nav-link">Apply For Donation</router-link>
           </li>
-          <li class="nav-item" v-if="applicationStore.isAuthenticated === true">
+          <li class="nav-item" v-if="applicationStore.isAuthenticated === true && applicationStore.isUser">
             <router-link :to="{ name: 'profile' }" class="nav-link">My Profile</router-link>
           </li>
+
+          <li class="nav-item" v-if="applicationStore.isAuthenticated === true && applicationStore.isSecretary">
+            <router-link :to="{ name: 'approveApplications' }" class="nav-link">APPLICATIONS</router-link>
+          </li>
+
+
           <li class="nav-item" v-if="applicationStore.isAuthenticated === false">
             <router-link :to="{ name: 'login' }" class="nav-link text-white">Login</router-link>
           </li>
