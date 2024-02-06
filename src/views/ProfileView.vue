@@ -2,6 +2,9 @@
 <script setup>
 import UserCredentials from '@/components/UserCredentials.vue';
 import { RouterLink } from 'vue-router'
+import { useCitizenStore } from '@/stores/application.js';
+const { citizenData } = useCitizenStore();
+
 
 </script>
 
@@ -15,6 +18,11 @@ import { RouterLink } from 'vue-router'
           </div>
           <div>
             <UserCredentials />
+          </div>
+          <div>
+            <li class="nav-item">
+              <router-link :to="{ name: 'editDetails' }" class="nav-link">Edit Details</router-link>
+            </li>
           </div>
         </div>
       </div>

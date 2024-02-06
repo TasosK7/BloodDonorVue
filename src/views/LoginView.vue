@@ -71,8 +71,8 @@ onBeforeMount(() => {
               E.g., user does not exist, credentials are not valid, etc.
               Always consider security, i.e., sometimes you may not want to unveil information.
               -->
-                            <div class="alert alert-danger" role="alert">
-                                Authentication failed!
+                            <div class="alert alert-danger" role="alert" style="width: 200%">
+                                Wrong Username or Password!
                             </div>
                         </div>
                         <div class="mb-2">

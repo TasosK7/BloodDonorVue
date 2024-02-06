@@ -31,6 +31,7 @@ const applicationStore = useApplicationStore();
           <li class="nav-item" v-if="applicationStore.isAuthenticated === true">
             <router-link :to="{ name: 'logout' }" class="nav-link text-white">Logout</router-link>
           </li>
+
         </ul>
       </div>
     </div>

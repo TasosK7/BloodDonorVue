@@ -33,15 +33,13 @@ const router = createRouter({
             path: '/profile',
             name: 'profile',
             component: () => import('../views/ProfileView.vue'),
-          children: [
-            {
-              path: '',
-              name: 'editetails',
-              component: () => import('../views/EditDetailsView.vue'),
-              meta: { requiresAuth: true }
-            }
-            ]
+
         },
+    {
+      path: '/editDetails',
+      name: 'editDetails',
+      component: () => import('../views/EditDetailsView.vue')
+    },
         {
             path: '/register',
             name: 'register',
@@ -57,6 +55,11 @@ const router = createRouter({
     name: 'thankyou',
     component: () => import('../views/ThankYouView.vue')
      },
+    {
+      path: '/changedDetails',
+      name: 'changedDetails',
+      component: () => import('../views/ChangedDetailsView.vue')
+    },
 
 
 
