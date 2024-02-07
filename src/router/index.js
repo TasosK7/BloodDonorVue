@@ -58,13 +58,30 @@ const router = createRouter({
     {
       path: '/changedDetails',
       name: 'changedDetails',
-      component: () => import('../views/ChangedDetailsView.vue')
+      component: () => import('../views/ChangedDetailsView.vue'),
     },
     {
       path: '/approveApplications',
       name: 'approveApplications',
-      component: () => import('../views/ApproveApplicationsView.vue')
+      component: () => import('../views/ApproveApplicationsView.vue'),
+
     },
+    {
+      path: '/applicationsDetails/:id',
+      name: 'applicantDetails',
+      component: () => import('../views/ApplicantDetailsView.vue')
+    },
+    {
+      path: '/approved',
+      name: 'approved',
+      component: () => import('../views/ApprovedView.vue')
+    },
+    {
+      path: '/rejected',
+      name: 'rejected',
+      component: () => import('../views/RejectedView.vue')
+    }
+
 
 
 

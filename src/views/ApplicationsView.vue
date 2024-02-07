@@ -52,7 +52,7 @@ onMounted(async () => {
                           <td>{{ application.recent_blood_tests }}</td>
                           <td>{{ application.approval_status }}</td>
                           <td>
-                            <!-- 
+                            <!--
                             <RouterLink :to="{ name: 'Applicatoin-Details', params: { id: application.id } }">
                               Display
                             </RouterLink>-->

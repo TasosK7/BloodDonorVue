@@ -4,6 +4,8 @@ import { useApplicationStore } from '@/stores/application.js'
 const { userData } = useApplicationStore();
 const values = ref([]);
 const loading = ref(true);
+import { useRouter } from 'vue-router';
+const router = useRouter();
 
 onMounted(async () => {
   try {
@@ -22,8 +24,20 @@ onMounted(async () => {
     console.error('Error fetching data:', error);
     loading.value = false;
   }
-
 });
+const handleAction = async (applicationId, action) => {
+  try {
+    const response = await fetch(`http://localhost:7070/secretary/${applicationId}/${action}`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': `Bearer ${userData.accessToken}`,
+      },
+    });
+  } catch (error) {
+    console.error(`Error fetching data:`, error);
+  }
+};
 </script>
 
 <template>
@@ -48,17 +62,25 @@ onMounted(async () => {
                 <td>{{ application.date_created }}</td>
                 <td>{{ application.recent_blood_tests }}</td>
                 <td>{{ application.approval_status }}</td>
+
                 <td>
-                  <!--
-                  <RouterLink :to="{ name: 'Applicatoin-Details', params: { id: application.id } }">
+                  <RouterLink :to="{ name: 'applicantDetails', params: { id: application.id } }" class="btn btn-primary btn-lg">
                     Display
-                  </RouterLink>-->
+                  </RouterLink>
+
                 </td>
+                <td  v-if="application.approval_status === 'Pending'">
+                  <button @click="handleAction(application.id , 'approve')+router.push({ name: 'approved' })" class="btn btn-success btn-lg">Approve</button>
+                </td>
+
+                <td  v-if="application.approval_status === 'Pending'">
+                  <button @click="handleAction(application.id , 'reject')+router.push({ name: 'rejected' })" class="btn btn-danger btn-lg">Reject</button>
+                </td>
+
               </tr>
               </tbody>
             </table>
           </div>
-          <pre>{{ data }}</pre>
         </div>
       </div>
     </div>
