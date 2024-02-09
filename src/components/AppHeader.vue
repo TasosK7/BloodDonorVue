@@ -31,6 +31,10 @@ const {userData} = useApplicationStore();
             <router-link :to="{ name: 'approveApplications' }" class="nav-link">APPLICATIONS</router-link>
           </li>
 
+          <li class="nav-item" v-if="applicationStore.isAuthenticated === true && applicationStore.isAdmin">
+            <router-link :to="{ name: 'showUsers' }" class="nav-link">Users</router-link>
+          </li>
+
 
           <li class="nav-item" v-if="applicationStore.isAuthenticated === false">
             <router-link :to="{ name: 'login' }" class="nav-link text-white">Login</router-link>

@@ -80,6 +80,16 @@ const router = createRouter({
       path: '/rejected',
       name: 'rejected',
       component: () => import('../views/RejectedView.vue')
+    },
+    {
+      path: '/showUsers',
+      name: 'showUsers',
+      component: () => import('../views/ShowUsersView.vue')
+    },
+    {
+      path: '/userDetails',
+      name: 'userDetails',
+      component: () => import('../views/UserDetailsView.vue')
     }
 
 
