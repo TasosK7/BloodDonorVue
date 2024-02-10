@@ -7,6 +7,12 @@ const loading = ref(true);
 import { useRouter } from 'vue-router';
 const router = useRouter();
 
+const roleData = ref({
+  id:'',
+  name:'',
+});
+
+
 onMounted(async () => {
   try {
     const response = await fetch('http://localhost:7070/admin/users', {
@@ -26,6 +32,40 @@ onMounted(async () => {
   }
 });
 
+const deleteUser = async (userId) => {
+  try {
+    await fetch(`http://localhost:7070/admin/${userId}`, {
+      method: 'DELETE',
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': `Bearer ${userData.accessToken}`,
+      },
+    });
+    console.log(`User with ID ${userId} deleted`);
+  } catch (error) {
+    console.error(`Error deleting user with ID ${userId}:`, error);
+  }
+};
+
+const updateUser = async (user) => {
+  try {
+    const response = await fetch(`http://localhost:7070/admin/${user.id}`, {
+      method: 'PUT',
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': `Bearer ${userData.accessToken}`,
+      },
+      body: JSON.stringify(user),
+    });
+  console.log(user);
+    const updatedUser = await response.json();
+    console.log('User updated:', updatedUser);
+  } catch (error) {
+    console.error('Error updating user:', error);
+  }
+};
+
+
 </script>
 
 <template>
@@ -37,35 +77,88 @@ onMounted(async () => {
             <h1>Applications</h1>
           </div>
           <div>
-            <table class="table">
+            <table class="table-lg">
               <thead>
               <tr>
                 <th>Id</th>
                 <th>Username</th>
+                <th>Password</th>
                 <th>Email</th>
                 <th>Role</th>
               </tr>
               </thead>
               <tbody v-if="values">
-              <tr v-for="user in values" :key="user.id">
+              <tr v-for="user in values" :key="user.id" >
                 <td>{{ user.id }}</td>
-                <td>{{ user.username }}</td>
-                <td>{{ user.email }}</td>
+                <td> <div class="mb-2">
+
+                </div>
+                  <div>
+                    <input
+                      v-model="user.username"
+                      type="text"
+                      class="form-control-lg"
+                      id="usernameFormControl"
+                    />
+                  </div></td>
+
+                <td> <div class="mb-2">
+                </div>
+                  <div>
+                    <input
+                      v-model="user.password"
+                      type="password"
+                      class="form-control-lg"
+                      id="passwordFormControl"
+                    />
+                  </div></td>
+
+
+                <td> <div class="mb-2">
+                </div>
+                  <div>
+                    <input
+                      v-model="user.email"
+                      type="text"
+                      class="form-control-lg"
+                      id="emailFormControl"
+                    />
+                  </div>
+                </td>
+
                 <tr v-for="role in user.roles" :key="user.id">
-                  <td>{{ role.name }}</td>
+                  <td> <div class="mb-2">
+                  </div>
+                    <div>
+                      <input
+                        v-model="role.name"
+                        type="text"
+                        class="form-control-lg"
+                        id="roleFormControl"
+                      />
+                    </div></td>
                 </tr>
 
+<!--                <td>-->
+<!--                  <div class="mb-2">-->
+<!--                    <select v-model="user.selectedRole" class="form-control-lg" id="roleFormControl">-->
+<!--                      <option value="ROLE_USER">ROLE_USER</option>-->
+<!--                      <option value="ROLE_SECRETARY">ROLE_SECRETARY</option>-->
+<!--                    </select>-->
+<!--                  </div>-->
+<!--                </td>-->
 
-<!--              <td v-if=user.roles.includes("ROLE_USER")>USER</td>-->
-<!--                <td v-if="user.roles.includes('ROLE_SECRETARY')">SECRETARY</td>-->
-<!--                <td v-if="user.roles.includes('ROLE_ADMIN')">ADMIN</td>-->
+
 
 
                 <td>
-                  <RouterLink :to="{ name: 'userDetails', params: { id: user.id } }" class="btn btn-primary btn-lg">
-                    User Details
-                  </RouterLink>
+                <button @click="deleteUser(user.id) + router.push({ name: 'userDeleted' })" class="btn btn-danger btn-lg">
+                  Delete
+                </button>
                 </td>
+                <td><button @click="updateUser(user) + router.push({ name: 'userUpdated' })" class="btn btn-success btn-lg">
+                  Update
+                </button></td>
               </tr>
               </tbody>
             </table>

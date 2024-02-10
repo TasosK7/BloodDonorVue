@@ -90,8 +90,22 @@ const router = createRouter({
       path: '/userDetails',
       name: 'userDetails',
       component: () => import('../views/UserDetailsView.vue')
+    },
+    {
+      path: '/userDeleted',
+      name: 'userDeleted',
+      component: () => import('../views/DeletedUserView.vue')
+    },
+    {
+      path: '/userUpdated',
+      name: 'userUpdated',
+      component: () => import('../views/UpdatedUserView.vue')
+    },
+    {
+      path: '/createUsers',
+      name: 'createUsers',
+      component: () => import('../views/CreateUserView.vue')
     }
-
 
 
 
