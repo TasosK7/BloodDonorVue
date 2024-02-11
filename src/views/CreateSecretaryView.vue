@@ -1,4 +1,4 @@
-<<script setup>
+<script setup>
 import { ref } from 'vue';
 import { useRouter } from 'vue-router';
 
@@ -12,7 +12,7 @@ const secData = ref({
   password: '',
   roles: [
     {
-      id: 3,
+      id: 2,
       name: 'ROLE_SECRETARY',
     }
   ]
