@@ -15,6 +15,7 @@ const roleData = ref({
 
 onMounted(async () => {
   try {
+
     const response = await fetch('http://localhost:7070/admin/users', {
       method: 'GET',
       headers: {
@@ -49,6 +50,17 @@ const deleteUser = async (userId) => {
 
 const updateUser = async (user) => {
   try {
+
+    const roleId = user.selectedRole === 'ROLE_USER' ? 2 : user.selectedRole === 'ROLE_SECRETARY' ? 3 : 0;
+
+    user.roles = [
+      {
+        id: roleId,
+        name: user.selectedRole,
+      },
+    ];
+
+
     const response = await fetch(`http://localhost:7070/admin/${user.id}`, {
       method: 'PUT',
       headers: {
@@ -126,18 +138,28 @@ const updateUser = async (user) => {
                   </div>
                 </td>
 
-                <tr v-for="role in user.roles" :key="user.id">
-                  <td> <div class="mb-2">
+                <!-- Replace the current role input with a select dropdown -->
+                <td>
+                  <div class="mb-2">
+                    <select v-model="user.selectedRole" class="form-control-lg" id="roleFormControl">
+                      <option value="ROLE_USER">ROLE_USER</option>
+                      <option value="ROLE_SECRETARY">ROLE_SECRETARY</option>
+                    </select>
                   </div>
-                    <div>
-                      <input
-                        v-model="role.name"
-                        type="text"
-                        class="form-control-lg"
-                        id="roleFormControl"
-                      />
-                    </div></td>
-                </tr>
+                </td>
+
+<!--                <tr v-for="role in user.roles" :key="user.id">-->
+<!--                  <td> <div class="mb-2">-->
+<!--                  </div>-->
+<!--                    <div>-->
+<!--                      <input-->
+<!--                        v-model="role.name"-->
+<!--                        type="text"-->
+<!--                        class="form-control-lg"-->
+<!--                        id="roleFormControl"-->
+<!--                      />-->
+<!--                    </div></td>-->
+<!--                </tr>-->
 
 <!--                <td>-->
 <!--                  <div class="mb-2">-->
