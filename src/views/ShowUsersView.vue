@@ -1,16 +1,11 @@
 <script setup>
-import { onMounted, ref } from 'vue';
+import { onMounted, ref, computed } from 'vue';
 import { useApplicationStore } from '@/stores/application.js'
 const { userData } = useApplicationStore();
 const values = ref([]);
 const loading = ref(true);
 import { useRouter } from 'vue-router';
 const router = useRouter();
-
-const roleData = ref({
-  id:'',
-  name:'',
-});
 
 
 onMounted(async () => {
@@ -77,6 +72,12 @@ const updateUser = async (user) => {
   }
 };
 
+const filteredUsers = computed(() => {
+  return values.value.filter(user => {
+    return user.roles.some(role => role.name === 'ROLE_USER' || role.name === 'ROLE_SECRETARY');
+  });
+});
+
 
 </script>
 
@@ -99,8 +100,8 @@ const updateUser = async (user) => {
                 <th>Role</th>
               </tr>
               </thead>
-              <tbody v-if="values">
-              <tr v-for="user in values" :key="user.id" >
+              <tbody v-if="filteredUsers">
+              <tr v-for="user in filteredUsers" :key="user.id" >
                 <td>{{ user.id }}</td>
                 <td> <div class="mb-2">
 
@@ -138,12 +139,12 @@ const updateUser = async (user) => {
                   </div>
                 </td>
 
-                <!-- Replace the current role input with a select dropdown -->
                 <td>
+<!--                  <p >{{ user.roles}}</p>-->
                   <div class="mb-2">
                     <select v-model="user.selectedRole" class="form-control-lg" id="roleFormControl">
-                      <option value="ROLE_USER">ROLE_USER</option>
-                      <option value="ROLE_SECRETARY">ROLE_SECRETARY</option>
+                      <option value="ROLE_USER">User</option>
+                      <option value="ROLE_SECRETARY">Secretary</option>
                     </select>
                   </div>
                 </td>
@@ -160,15 +161,6 @@ const updateUser = async (user) => {
 <!--                      />-->
 <!--                    </div></td>-->
 <!--                </tr>-->
-
-<!--                <td>-->
-<!--                  <div class="mb-2">-->
-<!--                    <select v-model="user.selectedRole" class="form-control-lg" id="roleFormControl">-->
-<!--                      <option value="ROLE_USER">ROLE_USER</option>-->
-<!--                      <option value="ROLE_SECRETARY">ROLE_SECRETARY</option>-->
-<!--                    </select>-->
-<!--                  </div>-->
-<!--                </td>-->
 
 
 

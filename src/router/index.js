@@ -105,6 +105,26 @@ const router = createRouter({
       path: '/createUsers',
       name: 'createUsers',
       component: () => import('../views/CreateUserView.vue')
+    },
+    {
+      path: '/createCitizen',
+      name: 'createCitizen',
+      component: () => import('../views/CreateCitizenView.vue')
+    },
+    {
+      path: '/completeCitizen:id',
+      name: 'completeCitizen',
+      component: () => import('../views/CompleteCitizenView.vue')
+    },
+    {
+      path: '/createSecretary',
+      name: 'createSecretary',
+      component: () => import('../views/CreateSecretaryView.vue')
+    },
+    {
+      path: '/creationSuccess',
+      name: 'creationSuccess',
+      component: () => import('../views/CreationSuccessView.vue')
     }
 
 
