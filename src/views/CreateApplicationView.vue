@@ -1,8 +1,9 @@
 <script setup>
 import { onBeforeMount, onMounted, ref } from 'vue'
 import { useRouter } from 'vue-router';
-import { useCitizenStore } from '@/stores/application.js';
+import { useApplicationStore, useCitizenStore } from '@/stores/application.js'
 const { citizenData  } = useCitizenStore();
+const { userData} = useApplicationStore();
 const router = useRouter();
 console.log('Citizen ID:', citizenData.id);
 
@@ -23,7 +24,8 @@ const onFormSubmit = () => {
   fetch('http://localhost:7070/citizen/'+citizenData.id+'/new', {
     method: 'POST',
     headers: {
-      'Content-Type': 'application/json'
+      'Content-Type': 'application/json',
+      'Authorization': `Bearer ${userData.accessToken}`
 
     },
     body: JSON.stringify(applicationData.value)
