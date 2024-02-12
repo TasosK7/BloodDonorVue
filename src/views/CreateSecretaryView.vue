@@ -1,6 +1,8 @@
 <script setup>
 import { ref } from 'vue';
 import { useRouter } from 'vue-router';
+import { useApplicationStore } from '@/stores/application.js'
+const {userData} = useApplicationStore();
 
 const router = useRouter();
 
@@ -28,7 +30,8 @@ const onFormSubmit = () => {
   fetch('http://localhost:7070/admin/users/new', {
     method: 'POST',
     headers: {
-      'Content-Type': 'application/json'
+      'Content-Type': 'application/json',
+      'Authorization': `Bearer ${userData.accessToken}`
 
 
     },

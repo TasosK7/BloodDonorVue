@@ -3,10 +3,10 @@ import { onBeforeMount, ref } from 'vue';
 import { useRouter } from 'vue-router';
 import { useApplicationStore } from '@/stores/application.js';
 const router = useRouter();
-const { setUserData, persistUserData, isAuthenticated } = useApplicationStore();
+const { userData } = useApplicationStore();
 
 const loading = ref(false);
-const userData = ref({
+const citData = ref({
   username:'',
   email:'',
   password: '',
@@ -20,18 +20,18 @@ const userData = ref({
 const creationFailed = ref(false);
 
 const onFormSubmit = () => {
-  console.log(JSON.stringify(userData.value));
+  console.log(JSON.stringify(citData.value));
   loading.value = true;
   creationFailed.value = false;
 
   fetch('http://localhost:7070/admin/users/new', {
     method: 'POST',
     headers: {
-      'Content-Type': 'application/json'
-
+      'Content-Type': 'application/json',
+      'Authorization': `Bearer ${userData.accessToken}`
 
     },
-    body: JSON.stringify(userData.value)
+    body: JSON.stringify(citData.value)
   })
     .then((response) => {
       if (response.ok) {
@@ -87,7 +87,7 @@ const onFormSubmit = () => {
               </div>
             <div>
               <input
-                v-model="userData.username"
+                v-model="citData.username"
                 type="text"
                 class="form-control-lg"
                 id="usernameFormControl"
@@ -100,7 +100,7 @@ const onFormSubmit = () => {
               >
             </div><div>
               <input
-                v-model="userData.email"
+                v-model="citData.email"
                 type="email"
                 class="form-control-lg"
                 id="emailFormControl"
@@ -113,7 +113,7 @@ const onFormSubmit = () => {
               >
             </div><div>
               <input
-                v-model="userData.password"
+                v-model="citData.password"
                 type="text"
                 class="form-control-lg"
                 id="passwordFormControl"
