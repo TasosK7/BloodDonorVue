@@ -10,12 +10,13 @@ const { citizenData } = useCitizenStore();
 
 const loading = ref(false);
 const authenticationFailed = ref(false);
+const welcomeMessage = ref('');
 
 
 onMounted(async () => {
   if (userData.roles.includes("ROLE_USER")) {
    // try {
-
+    welcomeMessage.value = `Welcome ${userData.username}, now you can apply for a donation.`;
     const response = await fetch('http://localhost:7070/citizen', {
       method: 'GET',
       headers: {
@@ -64,8 +65,10 @@ onMounted(async () => {
 
 
   }else if(userData.roles.includes("ROLE_SECRETARY")) {
+    welcomeMessage.value = `Welcome ${userData.username}, you can now handle applications.`;
     console.log("SEC");
   }else if(userData.roles.includes("ROLE_ADMIN")) {
+    welcomeMessage.value = `Welcome ${userData.username}, you can freely handle the users of the system`;
     console.log("ADMIN");
   }
 });
@@ -80,10 +83,11 @@ onMounted(async () => {
             <h1>Home</h1>
           </div>
           <div>
-            <p>
-              Logged in as: <strong>{{ userData.username }}</strong>
-              Role :<strong>{{ userData.roles }}</strong>
-            </p>
+            <p>{{welcomeMessage}}</p>
+<!--            <p>-->
+<!--              Logged in as: <strong>{{ userData.username }}</strong>-->
+<!--              Role :<strong>{{ userData.roles }}</strong>-->
+<!--            </p>-->
           </div>
         </div>
       </div>

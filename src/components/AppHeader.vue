@@ -8,7 +8,7 @@ const {userData} = useApplicationStore();
 </script>
 
 <template>
-  <h1 class="app-title">Blood Donor App</h1>
+  <h1 class="app-title">Blood Donor</h1>
   <header class="text-bg-dark custom-header">
     <div class="container">
       <div class="d-flex flex-wrap justify-content-center py-2 px-3">
@@ -28,7 +28,7 @@ const {userData} = useApplicationStore();
           </li>
 
           <li class="nav-item" v-if="applicationStore.isAuthenticated === true && applicationStore.isSecretary">
-            <router-link :to="{ name: 'approveApplications' }" class="nav-link">APPLICATIONS</router-link>
+            <router-link :to="{ name: 'approveApplications' }" class="nav-link">Applications</router-link>
           </li>
 
 
