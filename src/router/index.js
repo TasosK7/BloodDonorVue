@@ -80,8 +80,52 @@ const router = createRouter({
       path: '/rejected',
       name: 'rejected',
       component: () => import('../views/RejectedView.vue')
+    },
+    {
+      path: '/showUsers',
+      name: 'showUsers',
+      component: () => import('../views/ShowUsersView.vue')
+    },
+    {
+      path: '/userDetails',
+      name: 'userDetails',
+      component: () => import('../views/UserDetailsView.vue')
+    },
+    {
+      path: '/userDeleted',
+      name: 'userDeleted',
+      component: () => import('../views/DeletedUserView.vue')
+    },
+    {
+      path: '/userUpdated',
+      name: 'userUpdated',
+      component: () => import('../views/UpdatedUserView.vue')
+    },
+    {
+      path: '/createUsers',
+      name: 'createUsers',
+      component: () => import('../views/CreateUserView.vue')
+    },
+    {
+      path: '/createCitizen',
+      name: 'createCitizen',
+      component: () => import('../views/CreateCitizenView.vue')
+    },
+    {
+      path: '/completeCitizen:id',
+      name: 'completeCitizen',
+      component: () => import('../views/CompleteCitizenView.vue')
+    },
+    {
+      path: '/createSecretary',
+      name: 'createSecretary',
+      component: () => import('../views/CreateSecretaryView.vue')
+    },
+    {
+      path: '/creationSuccess',
+      name: 'creationSuccess',
+      component: () => import('../views/CreationSuccessView.vue')
     }
-
 
 
 

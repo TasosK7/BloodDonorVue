@@ -187,17 +187,23 @@ onBeforeMount(() => {
                             />
                         </div>
 
-                        <div class="mb-2">
-                            <label for="bloodTypeFormControl" class="form-label mb-1"
-                                >Blood Type</label
-                            >
-                            <input
-                                v-model="registrationData.blood_type"
-                                type="text"
-                                class="form-control-lg"
-                                id="bloodTypeFormControl"
-                            />
-                        </div>
+
+                      <div class="mb-2">
+                        <label for="bloodTypeFormControl" class="form-label mb-1"
+                        >Blood Type</label
+                        >
+                        </div><div>
+                        <select v-model="registrationData.blood_type" class="form-control-lg" id="roleFormControl">
+                          <option value="AB+">AB+</option>
+                          <option value="AB-">AB-</option>
+                          <option value="A+">A+</option>
+                          <option value="A-">A-</option>
+                          <option value="B+">B+</option>
+                          <option value="B-">B-</option>
+                          <option value="O+">O+</option>
+                          <option value="O-">O-</option>
+                        </select>
+                      </div>
 
                        
 

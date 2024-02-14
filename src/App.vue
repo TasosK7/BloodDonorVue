@@ -1,7 +1,7 @@
 <script setup>
 import {onBeforeMount} from 'vue';
-import { RouterView } from 'vue-router';
 import {useApplicationStore} from '@/stores/application.js';
+import { RouterView } from 'vue-router';
 import {useCitizenStore} from '@/stores/application.js'
 import AppHeader from '@/components/AppHeader.vue'
 import AppFooter from '@/components/AppFooter.vue';

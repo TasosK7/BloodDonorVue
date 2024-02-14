@@ -25,6 +25,10 @@ function secRole(roles) {
     return !!roles.includes("ROLE_SECRETARY");
 }
 
+function adminRole(roles) {
+    return !!roles.includes("ROLE_ADMIN");
+}
+
 export const useApplicationStore = defineStore('application', () => {
     const userData = ref(null);
 
@@ -60,7 +64,12 @@ export const useApplicationStore = defineStore('application', () => {
         return secRole(userData.value?.roles);
     });
 
-    return { userData, setUserData, persistUserData, loadUserData, clearUserData, isAuthenticated, isUser , isSecretary };
+    // Inside useApplicationStore definition
+    const isAdmin = computed(() => {
+        return adminRole(userData.value?.roles);
+    });
+
+    return { userData, setUserData, persistUserData, loadUserData, clearUserData, isAuthenticated, isUser , isSecretary , isAdmin };
 });
 
 
