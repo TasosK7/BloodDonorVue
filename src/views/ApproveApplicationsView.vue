@@ -17,7 +17,17 @@ onMounted(async () => {
       },
     });
     const data = await response.json();
-    values.value = data;
+
+    // Sort applications by approval status, with 'Pending' first
+    values.value = data.sort((a, b) => {
+      if (a.approval_status === b.approval_status) {
+        return 0;
+      }
+      return a.approval_status === 'Pending' ? -1 : 1;
+    });
+
+
+    //values.value = data;
     loading.value = false;
     console.log(data);
   } catch (error) {

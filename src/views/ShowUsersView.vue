@@ -19,6 +19,8 @@ onMounted(async () => {
       },
     });
     const data = await response.json();
+
+
     values.value = data;
     loading.value = false;
     console.log(data);
@@ -26,6 +28,7 @@ onMounted(async () => {
     console.error('Error fetching data:', error);
     loading.value = false;
   }
+
 });
 
 const deleteUser = async (userId) => {
@@ -46,12 +49,12 @@ const deleteUser = async (userId) => {
 const updateUser = async (user) => {
   try {
 
-    const roleId = user.selectedRole === 'ROLE_USER' ? 2 : user.selectedRole === 'ROLE_SECRETARY' ? 3 : 0;
+    const roleId = user.roles[0].name === 'ROLE_USER' ? 2 : user.roles[0].name === 'ROLE_SECRETARY' ? 3 : 0;
 
     user.roles = [
       {
         id: roleId,
-        name: user.selectedRole,
+        name: user.roles[0].name,
       },
     ];
 
@@ -140,9 +143,10 @@ const filteredUsers = computed(() => {
                 </td>
 
                 <td>
-<!--                  <p >{{ user.roles}}</p>-->
+<!--                  user.selectedRole == user.roles[0].name-->
+                  <!--                  <p >{{ user.roles}}</p>-->
                   <div class="mb-2">
-                    <select v-model="user.selectedRole" class="form-control-lg" id="roleFormControl">
+                    <select v-model="user.roles[0].name" class="form-control-lg" id="roleFormControl">
                       <option value="ROLE_USER">User</option>
                       <option value="ROLE_SECRETARY">Secretary</option>
                     </select>
