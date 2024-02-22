@@ -70,7 +70,13 @@ const onFormSubmit = () => {
             <span class="visually-hidden">Loading...</span>
           </div>
           <form v-else>
-
+            <div class="mb-2" v-if="creationFailed">
+              <div class="alert alert-danger" role="alert">
+                Registration failed!
+                -Every field must not be blank
+                -Phone Number must be of 10 digits exactly
+              </div>
+            </div>
 
             <div class="mb-2">
               <label for="firstNameFormControl" class="form-label mb-1"
