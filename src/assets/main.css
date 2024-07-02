@@ -10,11 +10,12 @@
   font-size: 34px;
   font-style: italic;
   background-color: hsla(126, 4%, 45%, 0.2);
+
 }
 h1 {
   font-size: 45px;
   font-style: italic;
-  color:#D13B18;
+  color: #bbbbbb;
 }
 
 a,
@@ -35,7 +36,7 @@ a,
   body {
     display: grid;
     place-items: center;
-    background-color: hsl(0, 2%, 20%);
+    background-color: hsl(0, 2%, 49%);
 
   }
 
@@ -45,7 +46,7 @@ a,
     justify-content: center;
     grid-template-columns: 1fr 1fr;
     padding: 0 2rem;
-    background-color: hsl(0, 4%, 33%);
+    background-color: hsl(0, 5%, 33%);
 
   }
 }
