@@ -6,13 +6,13 @@ const values = ref([]);
 const loading = ref(true);
 import { useRouter } from 'vue-router';
 const router = useRouter();
-const backendEnvVar = import.meta.VITE_BACKEND;
+const backendEnvVar = import.meta.env.VITE_BACKEND;
 
 
 onMounted(async () => {
   try {
 
-    const response = await fetch('{{backendEnvVar}}'+'/admin/users', {
+    const response = await fetch(`${backendEnvVar}/admin/users`, {
       method: 'GET',
       headers: {
         'Content-Type': 'application/json',
@@ -34,7 +34,7 @@ onMounted(async () => {
 
 const deleteUser = async (userId) => {
   try {
-    await fetch(`http://localhost:7070/admin/${userId}`, {
+    await fetch(`${backendEnvVar}/admin/${userId}`, {
       method: 'DELETE',
       headers: {
         'Content-Type': 'application/json',
@@ -60,7 +60,7 @@ const updateUser = async (user) => {
     ];
 
 
-    const response = await fetch(`http://localhost:7070/admin/${user.id}`, {
+    const response = await fetch(`${backendEnvVar}/admin/${user.id}`, {
       method: 'PUT',
       headers: {
         'Content-Type': 'application/json',

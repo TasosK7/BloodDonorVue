@@ -4,7 +4,7 @@ import { useRouter } from 'vue-router';
 import { useApplicationStore } from '@/stores/application.js';
 const router = useRouter();
 const { userData } = useApplicationStore();
-const backendEnvVar = import.meta.VITE_BACKEND;
+const backendEnvVar = import.meta.env.VITE_BACKEND;
 
 const loading = ref(false);
 const citData = ref({
@@ -25,7 +25,7 @@ const onFormSubmit = () => {
   loading.value = true;
   creationFailed.value = false;
 
-  fetch('{{backendEnvVar}}'+'/admin/users/new', {
+  fetch(`${backendEnvVar}/admin/users/new`, {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',

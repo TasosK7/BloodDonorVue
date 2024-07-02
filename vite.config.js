@@ -1,11 +1,13 @@
 import { fileURLToPath, URL } from 'node:url'
 
-import { defineConfig } from 'vite'
+
 import vue from '@vitejs/plugin-vue'
 import { defineConfig, loadEnv } from 'vite';
 // https://vitejs.dev/config/
-export default defineConfig({
-  return: {
+export default defineConfig(({ mode }) => {
+  const env = loadEnv(mode, process.cwd());
+
+  return{
   server: {
     proxy: {
       '/api/auth/signin': {
@@ -29,6 +31,8 @@ export default defineConfig({
     alias: {
       '@': fileURLToPath(new URL('./src', import.meta.url))
     }
-  }
- },
-})
+  },
+
+
+ };
+});

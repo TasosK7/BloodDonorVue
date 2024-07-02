@@ -5,7 +5,7 @@ import { useApplicationStore } from '@/stores/application.js';
 
 const router = useRouter();
 const { setUserData, persistUserData, isAuthenticated } = useApplicationStore();
-const backendEnvVar = import.meta.VITE_BACKEND;
+const backendEnvVar = import.meta.env.VITE_BACKEND;
 
 const loading = ref(false);
 const registrationData = ref({
@@ -27,7 +27,7 @@ const onFormSubmit = () => {
     loading.value = true;
     registrationFailed.value = false;
 
-    fetch('{{backendEnvVar}}'+'/auth/register', {
+    fetch(`${backendEnvVar}/auth/register`, {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'

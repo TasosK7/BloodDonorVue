@@ -5,7 +5,7 @@ import { useApplicationStore } from '@/stores/application.js'
 const { userData } = useApplicationStore();
 const values = ref([]);
 const loading = ref(true);
-const backendEnvVar = import.meta.VITE_BACKEND;
+const backendEnvVar = import.meta.env.VITE_BACKEND;
 
 const router = useRouter();
 const route = useRoute();
@@ -15,7 +15,7 @@ onMounted(async () => {
   userIdRef.value = route.params.id;
   console.log(userIdRef.value);
   try {
-    const response = await fetch('{{backendEnvVar}}'+'/admin/' + userIdRef.value , {
+    const response = await fetch(`${backendEnvVar}/admin/` + userIdRef.value , {
       method: 'PUT',
       headers: {
         'Content-Type': 'application/json',

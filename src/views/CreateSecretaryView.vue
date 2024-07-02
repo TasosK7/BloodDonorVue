@@ -3,7 +3,7 @@ import { ref } from 'vue';
 import { useRouter } from 'vue-router';
 import { useApplicationStore } from '@/stores/application.js'
 const {userData} = useApplicationStore();
-const backendEnvVar = import.meta.VITE_BACKEND;
+const backendEnvVar = import.meta.env.VITE_BACKEND;
 
 const router = useRouter();
 
@@ -28,7 +28,7 @@ const onFormSubmit = () => {
   loading.value = true;
   creationFailed.value = false;
 
-  fetch('{{backendEnvVar}}'+'/admin/users/new', {
+  fetch(`${backendEnvVar}/admin/users/new`, {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',

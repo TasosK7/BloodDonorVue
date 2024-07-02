@@ -2,7 +2,7 @@
 import { useApplicationStore, useCitizenStore } from '@/stores/application.js'
 const { citizenData , clearCitizenData } = useCitizenStore();
 const {userData} = useApplicationStore();
-const backendEnvVar = import.meta.VITE_BACKEND;
+const backendEnvVar = import.meta.env.VITE_BACKEND;
 import { ref } from 'vue'
 import { useRouter } from 'vue-router';
 const router = useRouter();
@@ -12,7 +12,7 @@ const details = ref({
 });
 const onFormSubmit = () => {
 
-  fetch('{{backendEnvVar}}'+'/citizen/'+citizenData.id+ '/edit', {
+  fetch(`${backendEnvVar}/citizen/`+citizenData.id+ '/edit', {
     method: 'PUT',
     headers: {
       'Content-Type': 'application/json',

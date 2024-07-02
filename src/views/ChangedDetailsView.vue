@@ -4,12 +4,12 @@ import { onMounted } from 'vue'
 const { setUserData, persistUserData, isAuthenticated } = useApplicationStore();
 const {clearCitizenData , setCitizenData , persistCitizenData} = useCitizenStore();
 const { userData } = useApplicationStore();
-const backendEnvVar = import.meta.VITE_BACKEND;
+const backendEnvVar = import.meta.env.VITE_BACKEND;
 onMounted(async () => {
  clearCitizenData();
 
 
-    const response = await fetch('{{backendEnvVar}}'+'/citizen', {
+    const response = await fetch(`${backendEnvVar}/citizen`, {
       method: 'GET',
       headers: {
         'Content-Type': 'application/json',

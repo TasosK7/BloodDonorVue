@@ -6,7 +6,7 @@ import { useApplicationStore } from '@/stores/application.js';
 const { setCitizenData, persistCitizenData, isAuthenticated } = useCitizenStore();
 const { userData } = useApplicationStore();
 const { citizenData } = useCitizenStore();
-const backendEnvVar = import.meta.VITE_BACKEND;
+const backendEnvVar = import.meta.env.VITE_BACKEND;
 
 
 const loading = ref(false);
@@ -18,7 +18,7 @@ onMounted(async () => {
   if (userData.roles.includes("ROLE_USER")) {
    // try {
     welcomeMessage.value = `Welcome ${userData.username}, now you can apply for a donation.`;
-    const response = await fetch('{{backendEnvVar}}'+'/citizen', {
+    const response = await fetch(`${backendEnvVar}/citizen`, {
       method: 'GET',
       headers: {
         'Content-Type': 'application/json',

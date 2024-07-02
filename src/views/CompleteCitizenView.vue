@@ -7,7 +7,7 @@ const route = useRoute();
 const userIdRef = ref(null);
 const loading = ref(false);
 const { userData } = useApplicationStore();
-const backendEnvVar = import.meta.VITE_BACKEND;
+const backendEnvVar = import.meta.env.VITE_BACKEND;
 
 const citizenData = ref({
   fname: '',
@@ -31,7 +31,7 @@ const onFormSubmit = () => {
   loading.value = true;
   creationFailed.value = false;
 
-  fetch('{{backendEnvVar}}'+'/admin/'+ userIdRef.value +'/citizen', {
+  fetch(`${backendEnvVar}/admin/`+ userIdRef.value +'/citizen', {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
