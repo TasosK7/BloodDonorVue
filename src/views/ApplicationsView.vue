@@ -5,12 +5,13 @@ const { userData } = useApplicationStore();
 const { citizenData } = useCitizenStore();
 const values = ref([]);
 const loading = ref(true);
+const backendEnvVar = import.meta.VITE_BACKEND;
 
 
 onMounted(async () => {
   try {
     console.log(citizenData.id);
-    const response = await fetch('http://localhost:7070/citizen/' + citizenData.id, {
+    const response = await fetch('{{backendEnvVar}}'+ '/citizen/' + citizenData.id, {
       method: 'GET',
       headers: {
         'Content-Type': 'application/json',

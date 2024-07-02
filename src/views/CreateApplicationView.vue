@@ -4,6 +4,7 @@ import { useRouter } from 'vue-router';
 import { useApplicationStore, useCitizenStore } from '@/stores/application.js'
 const { citizenData  } = useCitizenStore();
 const { userData} = useApplicationStore();
+const backendEnvVar = import.meta.VITE_BACKEND;
 const router = useRouter();
 console.log('Citizen ID:', citizenData.id);
 
@@ -21,7 +22,7 @@ const onFormSubmit = () => {
   loading.value = true;
   applicationFailed.value = false;
 
-  fetch('http://localhost:7070/citizen/'+citizenData.id+'/new', {
+  fetch('{{backendEnvVar}}'+'/citizen/'+citizenData.id+'/new', {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',

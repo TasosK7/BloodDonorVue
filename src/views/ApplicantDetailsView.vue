@@ -9,12 +9,13 @@ const loading = ref(true);
 const router = useRouter();
 const route = useRoute();
 const applicationIdRef = ref(null);
+const backendEnvVar = import.meta.VITE_BACKEND;
 
 onMounted(async () => {
   applicationIdRef.value = route.params.id;
   console.log(applicationIdRef.value);
   try {
-    const response = await fetch('http://localhost:7070/secretary/' + applicationIdRef.value, {
+    const response = await fetch('{{backendEnvVar}}'+'/secretary/' + applicationIdRef.value, {
       method: 'GET',
       headers: {
         'Content-Type': 'application/json',

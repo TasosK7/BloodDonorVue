@@ -6,14 +6,15 @@ const values = ref([]);
 const loading = ref(true);
 import { useRouter } from 'vue-router';
 const router = useRouter();
+const backendEnvVar = import.meta.VITE_BACKEND;
 
 onMounted(async () => {
   try {
-    const response = await fetch('http://localhost:7070/secretary', {
+    const response = await fetch('{{backendEnvVar}}'+'/secretary', {
       method: 'GET',
       headers: {
         'Content-Type': 'application/json',
-        'Authorization': `Bearer ${userData.accessToken}`,
+        'Authorization': `Bearer ${userData.accessToken}`
       },
     });
     const data = await response.json();
@@ -37,7 +38,7 @@ onMounted(async () => {
 });
 const handleAction = async (applicationId, action) => {
   try {
-    const response = await fetch(`http://localhost:7070/secretary/${applicationId}/${action}`, {
+    const response = await fetch(`'{{backendEnvVar}}' + '/secretary/${applicationId}/${action}`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',

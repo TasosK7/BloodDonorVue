@@ -9,7 +9,7 @@
   font-weight: normal;
   font-size: 34px;
   font-style: italic;
-
+  background-color: hsla(160, 100%, 37%, 0.2);
 }
 h1 {
   font-size: 45px;
@@ -35,6 +35,7 @@ a,
   body {
     display: grid;
     place-items: center;
+
   }
 
   #app {
@@ -43,5 +44,6 @@ a,
     justify-content: center;
     grid-template-columns: 1fr 1fr;
     padding: 0 2rem;
+    background-color: hsl(0, 4%, 33%);
   }
 }

@@ -6,12 +6,13 @@ const values = ref([]);
 const loading = ref(true);
 import { useRouter } from 'vue-router';
 const router = useRouter();
+const backendEnvVar = import.meta.VITE_BACKEND;
 
 
 onMounted(async () => {
   try {
 
-    const response = await fetch('http://localhost:7070/admin/users', {
+    const response = await fetch('{{backendEnvVar}}'+'/admin/users', {
       method: 'GET',
       headers: {
         'Content-Type': 'application/json',
