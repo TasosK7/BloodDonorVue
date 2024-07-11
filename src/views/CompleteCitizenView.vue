@@ -7,7 +7,7 @@ const route = useRoute();
 const userIdRef = ref(null);
 const loading = ref(false);
 const { userData } = useApplicationStore();
-const backendEnvVar = import.meta.env.VITE_BACKEND;
+const backendEnvVar = import.meta.env.VITE_BACKEND + "/api";
 
 const citizenData = ref({
   fname: '',

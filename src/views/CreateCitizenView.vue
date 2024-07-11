@@ -4,7 +4,7 @@ import { useRouter } from 'vue-router';
 import { useApplicationStore } from '@/stores/application.js';
 const router = useRouter();
 const { userData } = useApplicationStore();
-const backendEnvVar = import.meta.env.VITE_BACKEND;
+const backendEnvVar = import.meta.env.VITE_BACKEND + "/api";
 
 const loading = ref(false);
 const citData = ref({

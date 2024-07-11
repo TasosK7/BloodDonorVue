@@ -5,7 +5,7 @@ const { userData } = useApplicationStore();
 const { citizenData } = useCitizenStore();
 const values = ref([]);
 const loading = ref(true);
-const backendEnvVar = import.meta.env.VITE_BACKEND;
+const backendEnvVar = import.meta.env.VITE_BACKEND + "/api";
 
 
 onMounted(async () => {

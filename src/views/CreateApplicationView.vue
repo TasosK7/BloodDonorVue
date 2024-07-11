@@ -4,7 +4,7 @@ import { useRouter } from 'vue-router';
 import { useApplicationStore, useCitizenStore } from '@/stores/application.js'
 const { citizenData  } = useCitizenStore();
 const { userData} = useApplicationStore();
-const backendEnvVar = import.meta.env.VITE_BACKEND;
+const backendEnvVar = import.meta.env.VITE_BACKEND + "/api";
 const router = useRouter();
 console.log('Citizen ID:', citizenData.id);
 
