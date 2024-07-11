@@ -6,7 +6,7 @@ const values = ref([]);
 const loading = ref(true);
 import { useRouter } from 'vue-router';
 const router = useRouter();
-const backendEnvVar = import.meta.env.VITE_BACKEND;
+const backendEnvVar = import.meta.env.VITE_BACKEND + "/api/";
 
 
 onMounted(async () => {

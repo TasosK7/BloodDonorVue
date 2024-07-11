@@ -4,7 +4,7 @@ import { onMounted } from 'vue'
 const { setUserData, persistUserData, isAuthenticated } = useApplicationStore();
 const {clearCitizenData , setCitizenData , persistCitizenData} = useCitizenStore();
 const { userData } = useApplicationStore();
-const backendEnvVar = import.meta.env.VITE_BACKEND;
+const backendEnvVar = import.meta.env.VITE_BACKEND + "/api/";
 onMounted(async () => {
  clearCitizenData();
 
