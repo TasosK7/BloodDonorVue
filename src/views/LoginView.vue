@@ -5,7 +5,7 @@ import { useApplicationStore } from '@/stores/application.js';
 
 const router = useRouter();
 const { setUserData, persistUserData, isAuthenticated } = useApplicationStore();
-const backendEnvVar = import.meta.env.VITE_BACKEND + "/api/";
+const backendEnvVar = import.meta.env.VITE_BACKEND + "/api";
 
 const loading = ref(false);
 const credentials = ref({

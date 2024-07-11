@@ -5,7 +5,7 @@ import { useApplicationStore } from '@/stores/application.js'
 const { userData } = useApplicationStore();
 const values = ref([]);
 const loading = ref(true);
-const backendEnvVar = import.meta.env.VITE_BACKEND + "/api/";
+const backendEnvVar = import.meta.env.VITE_BACKEND + "/api";
 
 const router = useRouter();
 const route = useRoute();

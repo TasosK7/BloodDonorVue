@@ -2,7 +2,7 @@
 import { useApplicationStore, useCitizenStore } from '@/stores/application.js'
 const { citizenData , clearCitizenData } = useCitizenStore();
 const {userData} = useApplicationStore();
-const backendEnvVar = import.meta.env.VITE_BACKEND + "/api/";
+const backendEnvVar = import.meta.env.VITE_BACKEND + "/api";
 import { ref } from 'vue'
 import { useRouter } from 'vue-router';
 const router = useRouter();
