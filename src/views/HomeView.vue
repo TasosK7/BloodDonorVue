@@ -6,7 +6,7 @@ import { useApplicationStore } from '@/stores/application.js';
 const { setCitizenData, persistCitizenData, isAuthenticated } = useCitizenStore();
 const { userData } = useApplicationStore();
 const { citizenData } = useCitizenStore();
-const backendEnvVar = import.meta.env.VITE_BACKEND;
+const backendEnvVar = import.meta.env.VITE_BACKEND + "/api";
 
 
 const loading = ref(false);

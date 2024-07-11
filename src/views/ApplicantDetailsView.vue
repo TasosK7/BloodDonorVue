@@ -9,7 +9,7 @@ const loading = ref(true);
 const router = useRouter();
 const route = useRoute();
 const applicationIdRef = ref(null);
-const backendEnvVar = import.meta.env.VITE_BACKEND;
+const backendEnvVar = import.meta.env.VITE_BACKEND + "/api";
 
 onMounted(async () => {
   applicationIdRef.value = route.params.id;
