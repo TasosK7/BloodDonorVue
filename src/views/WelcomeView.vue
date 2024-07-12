@@ -8,7 +8,7 @@
           </div>
           <div>
             <p>
-              Please Login or Register
+              Please Login or Login
             </p>
 
           </div>
